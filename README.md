@@ -20,9 +20,13 @@ This is a database management project featuring a fully functional airline ticke
 ### Prerequisites
 - Python 3.x installed on your system.
 - MySQL Server installed and running.
--
-- ![allticket](https://github.com/user-attachments/assets/c057175b-a04c-4d58-9669-f0d2ef6c2112)
-
 - Basic knowledge of SQL for setting up the database.
 
 
+
+![home](https://github.com/user-attachments/assets/33f13129-584c-44f6-947b-eb2c10103ed4)
+![login](https://github.com/user-attachments/assets/ca075298-c677-4287-8bb4-69efac21104f)
+![search](https://github.com/user-attachments/assets/03af9bba-3db3-404c-8d76-6bb8e554121c)
+![schedule](https://github.com/user-attachments/assets/3e904d92-f8a1-4a1a-b9b6-1a71c1a030d5)
+![allticket](https://github.com/user-attachments/assets/b9be77f9-ea09-4bb2-ac00-f1587ad23b02)
+![active](https://github.com/user-attachments/assets/5a1acb40-d241-49e8-8435-19399346670d)
