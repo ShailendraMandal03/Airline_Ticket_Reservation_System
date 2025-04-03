@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAP FLIGHTS</title>
+    <link rel="stylesheet" href="/static/css/Aboutstyle.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="icon">
+            <h2 class="logo"   onclick="window.location.href='/'">ZAP</h2>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li><a href='/'>HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">SERVICE</a></li>
+                <!-- <li><a href="#">DESIGN</a></li> -->
+                {% if 'logged_in' not in session %}
+                    <li><a href='/login'>LOGIN</a></li>
+                {% endif %}
+
+                {% if 'logged_in' in session %}
+
+                <li><a href="/logout">LogOut</a></li>
+
+                {% endif %}
+
+                {% if 'logged_in' in session %}
+                    <li><a>{{ session['username'] }}</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+
+        <div class="search">
+            <input class="srch" type="search" name="" placeholder="Type To text">
+            <a href="#"> <button class="btn">Search</button></a>
+        </div>
+
+    </div> 
+
+    <section>
+        <section class="parallax-1">
+            <div class="parallax-inner">
+                <h1>ZAP FLIGHTS</h1>
+            </div>
+        </section>
+        <h2>Parallax Effect</h2>
+        <p>Welcome to Zap Flights, where your journey begins with a zap of convenience and efficiency! We are your go-to destination for seamless travel experiences, offering a user-friendly platform designed to simplify the way you book flights. Whether you're jetting off for business or leisure, our mission is to provide you with hassle-free booking, competitive prices, and unparalleled customer service. Say goodbye to the complexities of travel planning and let Zap Flights ignite your wanderlust with lightning-fast bookings and endless possibilities in the skies.</p>
+        <section class="parallax-2">
+            <div class="parallax-inner">
+                <h1>FLIGHTS RATINGS</h1>
+            </div>
+        </section>
+        <p>At Zap Flights, we understand the importance of transparency and trust in the travel industry. That's why we've implemented a robust review system to ensure that every traveler's voice is heard. Your feedback matters to us, whether it's praise for exceptional service or suggestions for improvement. With our review system, you can share your experiences openly, helping fellow travelers make informed decisions and empowering us to continuously enhance our offerings. Together, let's shape the future of travel with honest and insightful reviews.</p>
+        <section class="parallax-3">
+            <div class="parallax-inner">
+                <h1>NO QUESTIONS ON CANELLATION</h1>
+            </div>
+        </section>
+        <p>"At Zap Flights, transparency and trust are at the heart of what we do. Our robust review system empowers travelers like you to share your experiences openly. Whether you're praising exceptional service or providing constructive feedback, your insights help fellow travelers make informed decisions. Together, let's shape the future of travel with honest and insightful reviews."</p>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block css %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+h1 {
+    font-size: 120px;
+    text-align: center;
+    color: rgba(238, 243, 246, 0.326);
+}
+
+.parallax-1 {
+    background: url('/static/grid-2.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.parallax-2 {
+    background: url('/static/grid-3.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.parallax-3 {
+    background: url('/static/grid-1.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.parallax-inner {
+    padding: 10% 0;
+}
+
+h2 {
+    font-size: 32px;
+    color: #555;
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 20px 0 10px;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    text-align: justify;
+    line-height: 30px;
+    margin: 0 50px 40px;
+}
+
+p:nth-of-type(2),
+p:nth-of-type(3) {
+    margin: 40px 50px;
+}
+
+
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAP FLIGHTS</title>
+    <link rel="stylesheet" href="hstyle.css">
+    
+    {% endblock css %}
+
+    {% block body %}
+
+
+    <section>
+        <section class="parallax-1">
+            <div class="parallax-inner">
+                <h1>ZAP FLIGHTS</h1>
+            </div>
+        </section>
+        <h2>ABOUT US</h2>
+        <p>Welcome to Zap Flights, where your journey begins with a zap of convenience and efficiency! We are your go-to destination for seamless travel experiences, offering a user-friendly platform designed to simplify the way you book flights. Whether you're jetting off for business or leisure, our mission is to provide you with hassle-free booking, competitive prices, and unparalleled customer service. Say goodbye to the complexities of travel planning and let Zap Flights ignite your wanderlust with lightning-fast bookings and endless possibilities in the skies.</p>
+        <section class="parallax-2">
+            <div class="parallax-inner">
+                <h1>FLIGHTS RATINGS</h1>
+            </div>
+        </section>
+        <p>At Zap Flights, we understand the importance of transparency and trust in the travel industry. That's why we've implemented a robust review system to ensure that every traveler's voice is heard. Your feedback matters to us, whether it's praise for exceptional service or suggestions for improvement. With our review system, you can share your experiences openly, helping fellow travelers make informed decisions and empowering us to continuously enhance our offerings. Together, let's shape the future of travel with honest and insightful reviews.</p>
+        <section class="parallax-3">
+            <div class="parallax-inner">
+                <h1>NO QUESTIONS ON CANELLATION</h1>
+            </div>
+        </section>
+        <p>"At Zap Flights, transparency and trust are at the heart of what we do. Our robust review system empowers travelers like you to share your experiences openly. Whether you're praising exceptional service or providing constructive feedback, your insights help fellow travelers make informed decisions. Together, let's shape the future of travel with honest and insightful reviews."</p>
+    </section>
+
+    {% endblock body %}

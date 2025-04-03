@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAP FLIGHTS</title>
+<link rel="stylesheet" href="/static/css/dashstyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- <header> -->
+        
+        <!-- <a href="#" class="brand">ZAP FLIGHTS</a>
+            <div class="navigation">
+                <div class="navigation-items" >
+                    <a href="#">Home</a>
+                    <a href="">About Us</a>
+                    {% if 'logged_in' not in session %}
+                    <a href='/login'>Log In</a>
+                    <a href="#"> Sign Up</a>
+                    {% endif %}
+
+                    {% if 'logged_in' in session %}
+
+                        <a href="/logout">LogOut</a>
+
+                    {% endif %}
+                </div>
+            </div> -->
+
+            <div class="navbar">
+                <div class="icon">
+                    <h2 class="logo"   onclick="window.location.href='/'">ZAP</h2>
+                </div>
+    
+                <div class="menu">
+                    <ul>
+                        <li><a href='/'>HOME</a></li>
+                        <li><a href='/about'>ABOUT</a></li>
+                        <li><a href="#">SERVICE</a></li>
+                        <!-- <li><a href="#">DESIGN</a></li> -->
+                        {% if 'logged_in' not in session %}
+                            <li><a href='/login'>LOGIN</a></li>
+                        {% endif %}
+
+                        {% if 'logged_in' in session %}
+
+                        <li><a href="/logout">LogOut</a></li>
+
+                        {% endif %}
+
+                        {% if 'logged_in' in session %}
+                            <li><a>{{ session['username'] }}</a></li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+    
+                <div class="search">
+                    <input class="srch" type="search" name="" placeholder="Type To text">
+                    <a href="#"> <button class="btn">Search</button></a>
+                </div>
+    
+            </div> 
+
+            <!-- <span class="navbar-text">
+                {% if 'logged_in' in session %}
+                    {{ session['username'] }}
+                {% endif %}
+            </span> -->
+        <!-- </header> -->
+
+    <div class="carousel">
+        <div class="list">
+            <div class="item">
+                <img src="/static/dashimg4.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">CHECK FLIGHTS SCHEDULE</div>
+                    <div class="des">
+                        "Stay ahead of your travel game with ZAP FLIGHTS' convenient 'Check Flight Schedule' feature. Easily access up-to-date information on flight timings, arrivals, and departures for your chosen routes. Whether you're planning a trip in advance or need to adjust your itinerary on the go, our user-friendly interface ensures effortless navigation. With real-time updates and comprehensive schedules, ZAP FLIGHTS empowers you to make informed decisions and stay informed every step of your journey. Trust in ZAP FLIGHTS to keep you on track and in the know."
+                    </div>
+                    <div class="buttons">
+                        <button  onclick="window.location.href='/schedule'">CHECK SCHEDULE</button>
+                        {% if 'logged_in' not in session %}
+                            <button onclick="window.location.href='/login'">LogIn</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="item">
+                <img src="/static/dashimg1.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">ADD FLIGHT SCHEDULE</div>
+                    <div class="des">
+                        "Stay ahead of your travel game with ZAP FLIGHTS' convenient 'Check Flight Schedule' feature. Easily access up-to-date information on flight timings, arrivals, and departures for your chosen routes. Whether you're planning a trip in advance or need to adjust your itinerary on the go, our user-friendly interface ensures effortless navigation. With real-time updates and comprehensive schedules, ZAP FLIGHTS empowers you to make informed decisions and stay informed every step of your journey. Trust in ZAP FLIGHTS to keep you on track and in the know."
+                    </div>
+                    <div class="buttons">
+                        <button onclick="window.location.href='/Aaddflight'">ADD FLIGHT</button>
+                        {% if 'logged_in' not in session %}
+                            <button onclick="window.location.href='/login'">LogIn</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="item">
+                
+                <img src="/static/dashimg1.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">DELETE FLIGHTS SCHEDULE</div>
+                    <div class="des">
+                        
+                        "Experience the power of convenience with our intuitive flight search function at ZAP FLIGHTS. Seamlessly navigate through a myriad of destinations, dates, and airlines to find the perfect flight for your journey. With advanced filtering options and real-time updates, discover the best fares tailored to your preferences. Whether you're chasing the sun or embarking on a business trip, let our flight search function be your trusted guide in unlocking endless possibilities in the skies. Fly smarter, fly simpler with ZAP FLIGHTS."
+                    </div>
+                    <div class="buttons">   
+                        {% if 'logged_in' not in session %}   
+                        <button onclick="window.location.href='/login'">LogIn</button>  
+                            {% endif %}               
+                        <button>DELETE SCHEDULE</button>                   
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="item">
+                
+                <img src="/static/dashimg2.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">VIEW TICKET FOR FLIGHT</div>
+                    <div class="des">
+                        
+                        "Experience the power of convenience with our intuitive flight search function at ZAP FLIGHTS. Seamlessly navigate through a myriad of destinations, dates, and airlines to find the perfect flight for your journey. With advanced filtering options and real-time updates, discover the best fares tailored to your preferences. Whether you're chasing the sun or embarking on a business trip, let our flight search function be your trusted guide in unlocking endless possibilities in the skies. Fly smarter, fly simpler with ZAP FLIGHTS."
+                    </div>
+                    <div class="buttons">   
+                        {% if 'logged_in' not in session %}   
+                        <button onclick="window.location.href='/login'">LogIn</button>  
+                            {% endif %}               
+                        <button onclick="window.location.href='/A_viewticket'">SHOW TICKET</button>                   
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                
+                <img src="/static/dashimg3.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">ADD AIRCRAFT</div>
+                    <div class="des">
+                        
+                        "Experience the power of convenience with our intuitive flight search function at ZAP FLIGHTS. Seamlessly navigate through a myriad of destinations, dates, and airlines to find the perfect flight for your journey. With advanced filtering options and real-time updates, discover the best fares tailored to your preferences. Whether you're chasing the sun or embarking on a business trip, let our flight search function be your trusted guide in unlocking endless possibilities in the skies. Fly smarter, fly simpler with ZAP FLIGHTS."
+                    </div>
+                    <div class="buttons">   
+                        {% if 'logged_in' not in session %}   
+                        <button onclick="window.location.href='/login'">LogIn</button>  
+                            {% endif %}               
+                        <button  onclick="window.location.href='/AaddAirline'">ADD AIRCRAFT</button>                   
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                
+                <img src="/static/dashimg1.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">ACTIVATE/DEACTIVATE AIRCRAFT</div>
+                    <div class="des">
+                        
+                        "Experience the power of convenience with our intuitive flight search function at ZAP FLIGHTS. Seamlessly navigate through a myriad of destinations, dates, and airlines to find the perfect flight for your journey. With advanced filtering options and real-time updates, discover the best fares tailored to your preferences. Whether you're chasing the sun or embarking on a business trip, let our flight search function be your trusted guide in unlocking endless possibilities in the skies. Fly smarter, fly simpler with ZAP FLIGHTS."
+                    </div>
+                    <div class="buttons">   
+                        {% if 'logged_in' not in session %}   
+                        <button onclick="window.location.href='/login'">LogIn</button>  
+                            {% endif %}               
+                        <button onclick="window.location.href='/showairline'" >ACTIVATE / DEACTIVATE</button>                   
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="item">
+                
+                <img src="/static/dashimg1.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">DEACTIVATE AIRCRAFT</div>
+                    <div class="des">
+                        
+                        "Experience the power of convenience with our intuitive flight search function at ZAP FLIGHTS. Seamlessly navigate through a myriad of destinations, dates, and airlines to find the perfect flight for your journey. With advanced filtering options and real-time updates, discover the best fares tailored to your preferences. Whether you're chasing the sun or embarking on a business trip, let our flight search function be your trusted guide in unlocking endless possibilities in the skies. Fly smarter, fly simpler with ZAP FLIGHTS."
+                    </div>
+                    <div class="buttons">   
+                        {% if 'logged_in' not in session %}   
+                        <button onclick="window.location.href='/login'">LogIn</button>  
+                            {% endif %}               
+                        <button>DEACTIVATE</button>                   
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+
+        <div class="thumbnail">
+            <div class="item">
+                <img src="/static/dashimg4.jpg">
+                <div class="content">
+                    <div class="title">
+                        CHECK FLIGHT SCHEDULE
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="/static/dashimg1.jpg">
+                <div class="content">
+                    <div class="title">
+                        ADD FLIGHT SCHEDULE
+                        </div>
+                        <div class="description">
+                            Description
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="item">
+                        <img src="/static/dashimg1.jpg">
+                        <div class="content">
+                            <div class="title">
+                                DELETE FLIGHT SCHEDULE
+                            </div>
+                            <div class="description">
+                                Description
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                    
+                        <div class="item">
+                            <img src="/static/dashimg2.jpg">
+                            <div class="content">
+                                <div class="title">
+                                    VIEW BOOKED TICKET FOR FLIGHT
+                                </div>
+                                <div class="description">
+                                    Description
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="/static/dashimg3.jpg">
+                            <div class="content">
+                                <div class="title">
+                                    ADD AIRCRAFT
+                                </div>
+                                <div class="description">
+                                    Description
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="/static/dashimg1.jpg">
+                            <div class="content">
+                                <div class="title">
+                                    ACTIVATE/DEACTIVATE AIRCRAFT
+                                </div>
+                                <div class="description">
+                                    Description
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="item">
+                            <img src="/static/dashimg1.jpg">
+                            <div class="content">
+                                <div class="title">
+                                    DEACTIVATE AIRCRAFT
+                                </div>
+                                <div class="description">
+                                    Description
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                <div class="arrows">
+                    <button id="prev"></button>
+                    <button id="next">></button>
+                </div>
+                                        
+                <div class="time"></div>
+    </div>
+
+    <footer>
+        <div class="footerContainer">
+                <div class="button">
+                   <div class="icon">
+                      <i class="fab fa-facebook-f"></i>
+                   </div>
+                   <span>Facebook</span>
+                </div>
+                <div class="button">
+                   <div class="icon">
+                      <i class="fab fa-twitter"></i>
+                   </div>
+                   <span>Twitter</span>
+                </div>
+                <div class="button">
+                   <div class="icon">
+                      <i class="fab fa-instagram"></i>
+                   </div>
+                   <span>Instagram</span>
+                </div>
+                <div class="button">
+                   <div class="icon">
+                      <i class="fab fa-youtube"></i>
+                   </div>
+                   <span>YouTube</span>
+                </div>
+            
+            <div class="footerNav">
+                <ul><li><a href="">Home</a></li>
+                    <li><a href="">News</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact Us</a></li>
+                    <li><a href="">our Team</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2024; Designed <span class="designer"></span></p>
+        </div>
+    </footer>
+    <script src="/static/css/dashapp.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Tickets</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .brand {
+            font-size: 32px;
+            text-decoration: none;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .navigation-items a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation-items a:hover {
+            background-color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #de7c14;
+            margin-top: 20px;
+        }
+
+        .ticket {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        .ticket-details table {
+            width: 100%;
+        }
+
+        .ticket-details table td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .ticket-details table td:first-child {
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .ticket-details table td:last-child {
+            width: 70%;
+        }
+
+        .passenger-details li {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .passenger-details li p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="brand">ZAP</a>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="/">Home</a>
+                <a href="/project">Search Flights</a>
+                <a href='/t'>Booked Tickets</a>
+                <a href='/pnrforcancel'>Cancel Tickets</a>
+                {% if 'logged_in' not in session %}
+                <a href='/login'>LogIn</a>
+                {% endif %}
+                {% if 'logged_in' in session %}
+                <a href="/logout">LogOut</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <h1>MY TICKET</h1>
+    {% if ticket_details %}
+    {% for ticket in ticket_details %}
+    <div class="ticket">
+        <div class="ticket-details">
+            <table>
+                <tr>
+                    <td><strong>PNR:</strong></td>
+                    <td>{{ ticket['pnr'] }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Flight No:</strong></td>
+                    <td>{{ ticket['flight_no'] }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Departure Date:</strong></td>
+                    <td>{{ ticket['journey_date'] }}</td>
+                </tr>
+                <tr>
+                    <td><strong>From:</strong></td>
+                    <td>{{ ticket['from_location']}}</td>
+                </tr>
+                <tr>
+                    <td><strong>To:</strong></td>
+                    <td>{{ ticket['to_location'] }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Class:</strong></td>
+                    <td>{{ ticket['class'] }}</td>
+                </tr>
+                <tr>
+                    <td><strong>No. of Passengers:</strong></td>
+                    <td>{{ ticket['no_of_passengers'] }}</td>
+                </tr>
+            </table>
+        </div>
+        <h3>Passenger Details:</h3>
+        <ul class="passenger-details">
+            {% for passenger in ticket['passengers'] %}
+            <li>
+                <p><strong>Name:</strong> {{ passenger['Name'] }}</p>
+                <p><strong>Age:</strong> {{ passenger['Age'] }}</p>
+                <p><strong>Email:</strong> {{ passenger['Email'] }}</p>
+                <p><strong>Gender:</strong> {{ passenger['Gender'] }}</p>
+                <p><strong>ID:</strong> {{ passenger['ID_type'] }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="no-ticket-msg">
+        <p>You have not booked any ticket.</p>
+    </div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="/static/css/show_ailrine.css">
+    <link rel="stylesheet" href="/static/css/tablestyle.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">ZAP</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href='/'>HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <li><a href="#">DESIGN</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+
+        </div> 
+        <div class="content">
+            <h1>ZAP FLIGHT & <br><span>FLIGHT</span> <br>About</h1>
+            <p class="par" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque 
+                 expedita <br>atque eveniet quis nesciunt. Quos nulla vero consequuntur, fugit nemo ad delectus 
+                <br> a quae totam ipsa illum minus laudantium?</p>
+
+                <!-- <button class="cn"><a href="#">JOIN US</a></button> -->
+                <form action="/A_viewticket" method="POST">
+                <div class="form">
+                    <!-- <img src="/static/showairline.jpg" alt="" class="form-image"> -->
+                    <!-- <h2>VIEW TICKET</h2>
+                   
+                    
+                    
+                    <input list="Airline" name="Airline" placeholder="Choose AIRLINE NAME" >
+                    <datalist id="Airline">
+                        
+                    </datalist>
+
+                    <input list="From"  name="From" placeholder="Enter FROM:" >
+                    <datalist id="From">
+                        
+                    </datalist>
+
+                    <input list="To"  name="To" placeholder="Enter TO:" >
+                    <datalist id="To">
+                    
+                    </datalist>
+
+                    <input type="date" name="DATE" placeholder="Enter DATE "> 
+                  
+                    <button class="btnn" type="submit">SEARCH TICKET</button>
+
+                </form>
+            
+
+                    
+                    <br><br>
+                    <div class="icons">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+                    </div> -->
+
+                </div>
+                
+                <div>
+                    <br>
+                    <h2>VIEW <br><span>AIRLINES</span></h2>
+                </div>
+            <br>
+            
+                <main  class="table" id="customers_table">
+                    <section class="table__header">
+                        <h3><b>{{Airline_type}}</b> @@ <small><small>{{From}}->{{To}}</small></small> </h3>
+                        <div class="input-group">
+                            <input type="search" placeholder="Enter Airline ID">
+                        </div>
+
+                    </section>
+                    <section  class="table__body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th > AIRLINE ID <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> AIRLINE NAME <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> CAPACITY<span class="icon-arrow">&UpArrow;</span></th>
+                                    <th>ACTIVE STATUS <span class="icon-arrow">&UpArrow;</span></th>
+                                
+                                    
+                                </tr>
+                            </thead>
+                                {% for airline in Airline_info %}
+                                <tr>
+                                    <td>{{airline[0]}}</td>
+                                    <td>{{airline[1]}}</td>
+                                    <td>{{airline[2]}}</td>
+                                
+                                   
+                                    <td  onclick="redirectToActivate('{{airline[0] }}')">
+                                        {% if airline[3] == 'Yes' %}
+                                        <p class="status CONFIRMED">ACTIVE</p>
+                                        {% else %}
+                                        <p class="status pending">DE-ACTIVE</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            <tbody>
+                                
+
+                            </tbody>
+                        </table>
+                    </section>
+                </main>
+            </div>
+
+            
+
+
+
+            </div>
+           
+        </div>    
+        
+    </div>
+
+    <script src="/static/css/tablescript.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js" , src="tablescript.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Tickets</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* Your existing CSS styles */
+
+        /* Additional CSS for enhanced styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #de7c14;
+            margin-top: 80px;
+            padding-top: 50px;
+        }
+
+        .ticket {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ticket-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .ticket-details table td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .ticket-details table td:first-child {
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .ticket-details table td:last-child {
+            width: 70%;
+        }
+
+        .no-ticket-msg {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Additional CSS for navbar */
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+        }
+
+        .brand {
+            font-size: 32px;
+            text-decoration: none;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .navigation-items a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation-items a:hover {
+            background-color: #333;
+        }
+
+        .navbar-text {
+            font-weight: bold;
+            font-size: 20px;
+            color: #fff;
+            margin-left: auto;
+            margin-right: 20px;
+        }
+
+        /* CSS for delete button */
+        form {
+            text-align: center;
+        }
+
+        button {
+            background-color: #ff5733;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff8c66;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="brand">ZAP FLIGHTS</a>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="/">Home</a>
+                <a href="/project">Search Flights</a>
+                <a href='/t'>Booked Tickets</a>
+                <a href='/pnrforcancel'>Cancel Tickets</a>
+                {% if 'logged_in' not in session %}
+                <a href='/login'>LogIn</a>
+                {% endif %}
+                {% if 'logged_in' in session %}
+                <a href="/logout">LogOut</a>
+                {% endif %}
+            </div>
+        </div>
+        <!-- <span class="navbar-text">
+            {% if 'logged_in' in session %}
+            {{ session['username'] }}
+            {% endif %}
+        </span> -->
+    </header>
+
+    <h1>My Tickets</h1>
+    {% if pnr_detail %}
+    <div class="ticket">
+        <div class="ticket-details">
+            <table>
+                <tr>
+                    <td>PNR:</td>
+                    <td>{{ pnr_detail[0][0] }}</td>
+                </tr>
+                <tr>
+                    <td>Flight No:</td>
+                    <td>{{ pnr_detail[0][1] }}</td>
+                </tr>
+                <tr>
+                    <td>Departure Date:</td>
+                    <td>{{ pnr_detail[0][2] }}</td>
+                </tr>
+                <tr>
+                    <td>FROM:</td>
+                    <td>{{ pnr_detail[0][3] }}</td>
+                </tr>
+                <tr>
+                    <td>TO:</td>
+                    <td>{{ pnr_detail[0][4] }}</td>
+                </tr>
+                <tr>
+                    <td>CLASS:</td>
+                    <td>{{ pnr_detail[0][5] }}</td>
+                </tr>
+                <tr>
+                    <td>PASSENGER:</td>
+                    <td>{{ pnr_detail[0][6] }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <form action="/cancel_ticket2/{{ pnr_detail[0][0] }}" method="POST">
+        <button type="submit">Cancel Ticket</button>
+    </form>
+    {% else %}
+    <div class="no-ticket-msg">
+        <p>You have not booked any ticket regarding your search PNR number.<br><br>Please enter a valid PNR number.</p>
+        <button><a href='/pnrforcancel'>SEARCH_PNR</a></button>
+    </div>
+    {% endif %}
+</body>
+</html>

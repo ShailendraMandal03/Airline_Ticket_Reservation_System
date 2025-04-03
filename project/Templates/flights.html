@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Available Flights</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        margin-top: 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #f5f5f5;
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Available Flights</h2>
+    <table>
+        <thead>
+        
+            <tr>
+                <th>Flight Number</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Date</th>
+                <th>Airline</th>
+                <th>Seats Available</th>
+                <th>Time</th>
+            </tr>
+        
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+            <tr onclick="redirectToPassenger('{{ flight[0] }}')">
+                <td>{{ flight[5] }}</td> <!-- Flight Number -->
+                <td>{{ flight[1] }}</td> <!-- From -->
+                <td>{{ flight[2] }}</td> <!-- To -->
+                <td>{{ flight[3] }}</td> <!-- Date -->
+                <td>{{ flight[4] }}</td> <!-- Airline -->
+                <td>{{ flight[6] }}</td> <!--time-->
+                <td>{{ flight[7] }}</td> <!-- Seats Available -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script>
+    function redirectToPassenger(flightId) {
+        window.location.href = '/passenger?flight_id=' + flightId;
+    }
+</script>
+</body>
+</html>

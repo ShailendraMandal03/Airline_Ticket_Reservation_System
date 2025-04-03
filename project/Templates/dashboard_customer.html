@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZAP FLIGHTS</title>
+<link rel="stylesheet" href="/static/css/dashstyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- <header>
+        
+        <a href="#" class="brand">ZAP FLIGHTS</a>
+            <div class="navigation">
+                <div class="navigation-items" >
+                    <a href="#">Home</a>
+                    <a href="/project">Search Flights</a>
+                    <a href='/t'>Booked Tickets</a>
+                    <a href='/pnrforcancel'>Cancel Tickets</a>
+                    {% if 'logged_in' not in session %}
+                    <a href='/login'>LogIn</a>
+                    {% endif %}
+
+                    {% if 'logged_in' in session %}
+
+                        <a href="/logout">LogOut</a>
+
+                    {% endif %}
+                </div>
+            </div>
+            <span class="navbar-text">
+                {% if 'logged_in' in session %}
+                    {{ session['username'] }}
+                {% endif %}
+            </span>
+        </header> -->
+
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"  onclick="window.location.href='/'">ZAP</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href='/'>HOME</a></li>
+                    <li><a href="/about">ABOUT</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <!-- <li><a href="#">DESIGN</a></li> -->
+                    {% if 'logged_in' not in session %}
+                        <li><a href='/login'>LOGIN</a></li>
+                    {% endif %}
+
+                    {% if 'logged_in' in session %}
+
+                    <!-- <li><a href="/logout">LogOut</a></li> -->
+                    <li><a href="/logout" style="text-transform: uppercase;">LogOut</a></li>
+
+
+                    {% endif %}
+
+                    {% if 'logged_in' in session %}
+                        <!-- <li><a style="display: inline-block; width: 30px; height: 30px; line-height: 30px; border-radius: 50%; text-align: center; background-color: white; text-transform: uppercase; color: black; text-decoration: none;" href="#">{{ session['username'] }}</a></li> -->
+                        <li><a style="text-transform: uppercase;">{{ session['username'] }}</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+            
+
+        </div> 
+
+
+        <!-- carousel -->
+    <div class="carousel">
+        <!-- list item -->
+        <div class="list">
+        
+            <div class="item">
+                
+                <img src="/static/dashimg1.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">SEARCH FLIGHT</div>
+                    <div class="des">
+                        
+                        "Experience the power of convenience with our intuitive flight search function at ZAP FLIGHTS. Seamlessly navigate through a myriad of destinations, dates, and airlines to find the perfect flight for your journey. With advanced filtering options and real-time updates, discover the best fares tailored to your preferences. Whether you're chasing the sun or embarking on a business trip, let our flight search function be your trusted guide in unlocking endless possibilities in the skies. Fly smarter, fly simpler with ZAP FLIGHTS."
+                    </div>
+                    <div class="buttons">   
+                        {% if 'logged_in' not in session %}   
+                        <button onclick="window.location.href='/login'">LogIn</button>  
+                            {% endif %}               
+                        <button onclick="window.location.href='/project'">SEARCH FLIGHT</button>                   
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/static/dashimg2.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">VIEW BOOKED TICKETS</div>
+                    <div class="des">
+                        "At ZAP FLIGHTS, transparency is paramount. Explore our 'View Blocked Flights' feature to uncover hidden opportunities and gain insights into unavailable options. Whether due to high demand or specific restrictions, this tool empowers you to understand the full scope of available flights. Navigate effortlessly through blocked flights to make informed decisions and seize alternative travel routes. With ZAP FLIGHTS, transparency paves the way for seamless travel planning and endless exploration."
+                    </div>
+                    <div class="buttons">
+                        {% if 'logged_in' not in session %}
+                            <button onclick="window.location.href='/login'">LogIn</button>
+                        {% endif %}
+                        <button onclick="window.location.href='/t'">View Ticket</button> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="item">
+                <img src="/static/dashimg3.jpg">
+                <div class="content">
+                    <div class="title">ZAP FLIGHTS</div>
+                    <div class="topic">CANCEL BOOKED TICKETS</div>
+                    <div class="des">
+                        "At ZAP FLIGHTS, we understand plans can change. That's why we offer a hassle-free ticket cancellation service. Simply navigate to your booking details and easily cancel your tickets with just a few clicks. Our user-friendly interface ensures a seamless process, providing quick refunds and clear communication every step of the way. Whether your plans have shifted or circumstances demand flexibility, trust ZAP FLIGHTS to handle your cancellations with efficiency and care. Your journey, your control, with ZAP FLIGHTS."
+                    </div>
+                    <div class="buttons">
+                        
+                        <button onclick="window.location.href='/pnrforcancel'">CANCEL TICKET</button>
+                        {% if 'logged_in' not in session %}
+                            <button onclick="window.location.href='/login'">LogIn</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="thumbnail">
+            <div class="item">
+                <img src="/static/dashimg1.jpg">
+                <div class="content">
+                    <div class="title">
+                        Book Flights
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/static/dashimg2.jpg">
+                <div class="content">
+                    <div class="title">
+                        View Booked Tickets
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="/static/dashimg3.jpg">
+                <div class="content">
+                    <div class="title">
+                        Cancel Booked Flights
+                    </div>
+                    <div class="description">
+                        Description
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="arrows">
+            <button id="prev"></button>
+            <button id="next">></button>
+        </div>
+       
+        <div class="time"></div>
+
+    </div>
+
+    <footer>
+        <div class="footerContainer">
+                <div class="button">
+                   <div class="icon">
+                      <i class="fab fa-facebook-f"></i>
+                   </div>
+                   <span>Facebook</span>
+                </div>
+                <div class="button">
+                   <div class="icon">
+                      <i class="fab fa-twitter"></i>
+                   </div>
+                   <span>Twitter</span>
+                </div>
+                <div class="button">
+                   <div class="icon">
+                      <i class="fab fa-instagram"></i>
+                   </div>
+                   <span>Instagram</span>
+                </div>
+                <div class="button">
+                   <div class="icon">
+                      <i class="fab fa-youtube"></i>
+                   </div>
+                   <span>YouTube</span>
+                </div>
+            
+            <div class="footerNav">
+                <ul><li><a href="">Home</a></li>
+                    <li><a href="">News</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact Us</a></li>
+                    <li><a href="">our Team</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="footerBottom">
+            <p>Copyright &copy;2024; Designed by <span class="designer">RAHUL</span></p>
+        </div>
+    </footer>
+    <script src="/static/css/dashapp.js"></script>
+</body>
+</html>
+

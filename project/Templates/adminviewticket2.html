@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="/static/css/admin_viewticket.css.css">
+    <link rel="stylesheet" href="/static/css/tablestyle.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">ZAP</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href='/'>HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <li><a href="#">DESIGN</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+
+        </div> 
+        <div class="content">
+            <h1>ZAP FLIGHT & <br><span>FLIGHT</span> <br>About</h1>
+            <p class="par" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque 
+                 expedita <br>atque eveniet quis nesciunt. Quos nulla vero consequuntur, fugit nemo ad delectus 
+                <br> a quae totam ipsa illum minus laudantium?</p>
+
+                <!-- <button class="cn"><a href="#">JOIN US</a></button> -->
+                <form action="/A_viewticket" method="POST">
+                <div class="form">
+                    <h2>VIEW TICKET</h2>
+                    <!-- <input type="text" name="Airline_ID" placeholder="Enter Airline ID "> -->
+    
+                    
+                    <input list="Airline" name="Airline" placeholder="Choose AIRLINE NAME" >
+                    <datalist id="Airline">
+                        <option value="10001">
+                        <option value="10002">
+                        <option value="10004">
+                        <option value="10005">
+                        <option value="10003">
+                        <option value="10009">
+                    </datalist>
+
+                    <input list="From"  name="From" placeholder="Enter FROM:" >
+                    <datalist id="From">
+                        <option value="Delhi">
+                        <option value="Mumbai">
+                        <option value="Jaipur">
+                        <option value="Chennai">
+                        <option value="Goa">
+                    </datalist>
+
+                    <input list="To"  name="To" placeholder="Enter TO:" >
+                    <datalist id="To">
+                        <option value="Delhi">
+                            <option value="Mumbai">
+                            <option value="Jaipur">
+                            <option value="Chennai">
+                            <option value="Goa">
+                    </datalist>
+
+                    <input type="date" name="DATE" placeholder="Enter DATE "> 
+                    
+                    <!-- <button class="btnn"><a href="#">SEARCH TICKET</a></button> -->
+                    <button class="btnn" type="submit">SEARCH TICKET</button>
+
+                </form>
+            
+
+                    <!-- <p class="link">Don't have an account<br>
+                    <a href="#">Sign up </a> here</a></p>
+                    <p class="liw">Log in with</p> -->
+                    <br><br>
+                    <div class="icons">
+                        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+                    </div>
+
+                </div>
+                
+                <div>
+                    <br><br><br><br><br><br><br><br>
+                    <h2>VIEW <br><span>TICKETs</span></h2>
+                </div>
+            <br>
+                <main class="table" id="customers_table">
+                    <section class="table__header">
+                        <h3><b>{{Airline_type}}</b> @@ <small><small>{{From}}-->{{To}}</small></small> </h3>
+                        <div class="input-group">
+                            <input type="search" placeholder="Enter PNR Number...">
+                            <!-- <img src="images/search.png" alt=""> -->
+                        </div>
+                        <!-- <div class="export__file">
+                            <label for="export-file" class="export__file-btn" title="Export File"></label>
+                            <input type="checkbox" id="export-file">
+                            <div class="export__file-options">
+                                <label>Export As &nbsp; &#10140;</label>
+                                <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
+                                <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
+                                <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
+                                <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
+                            </div>
+                        </div> -->
+                    </section>
+                    <section class="table__body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th > pnr <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Customer_name <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Age <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th>Gender <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> ID_type <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> ID_number <span class="icon-arrow">&UpArrow;</span></th>
+                            
+                                    <th> Class <span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Meal Choice<span class="icon-arrow">&UpArrow;</span></th>
+                                    <th> Status <span class="icon-arrow">&UpArrow;</span></th>
+                                    
+                                </tr>
+                            </thead>
+                                {% for ticket in passenger_info %}
+                                <tr>
+                                    <td>{{ticket[1]}}</td>
+                                    <td>{{ticket[2]}}</td>
+                                    <td>{{ticket[3]}}</td>
+                                    <td>{{ticket[5]}}</td>
+                                    <td>{{ticket[6]}}</td>
+                                    <td>{{ticket[7]}}</td>
+                                    <td>{{ticket[9]}}</td>
+                                    <td>{{ticket[8]}}</td>
+                                    <td>
+                                        {% if ticket[10] == 'CONFIRMED' %}
+                                        <p class="status CONFIRMED">{{ ticket[10] }}</p>
+
+                                        {% elif ticket[10] == 'CANCELLED' %}
+                                        <p class="status cancelled">{{ ticket[10] }}</p>
+
+
+                                        {% else %}
+                                        <p class="status pending">{{ ticket[10] }}</p>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            <tbody>
+                                
+
+                            </tbody>
+                        </table>
+                    </section>
+                </main>
+
+            
+
+
+
+            </div>
+           
+        </div>    
+        
+    </div>
+
+    <script src="/static/css/tablescript.js"></script>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js" , src="tablescript.js"></script>
+</body>
+</html>

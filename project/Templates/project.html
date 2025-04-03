@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Flights</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url('/static/grid-4.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 120px;
+    text-align: center;
+    color: rgba(255, 255, 255, .4);
+}
+
+.login-box{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 840px;
+    height: 480px;
+    padding: 30px;
+    margin: 0 240px; 
+}
+
+.login-header{
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+.login-header header{
+    color: #333;
+    font-size: 30px;
+    font-weight: 600;
+}
+.input-box .input-field{
+    width: 100%;
+    height: 60px;
+    font-size: 17px;
+    padding: 0 25px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0, 0.05);
+    outline: none;
+    transition: .3s;
+}
+
+::placeholder{
+    font-weight: 500;
+    color: #222;
+}
+.input-field:focus{
+    width: 105%;
+}
+
+section{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+#check{
+    margin-right: 10px;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+section a{
+    color: #555;
+}
+.input-submit{
+    position: relative;
+}
+.submit-btn{
+    width: 100%;
+    height: 60px;
+    background: #695546;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+.input-submit label{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+.submit-btn:hover{
+    background: #a7846a;
+    transform: scale(1.05,1);
+}
+.sign-up-link{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+
+.navbar{
+            width: 1200px;
+            height: 75px;
+            margin: auto;
+        }
+        
+        .icon{
+            width: 200px;
+            float: left;
+            height: 70px;
+        }
+        
+        .logo{
+            color: #cd6510;
+            font-size: 35px;
+            font-family: Arial;
+            padding-left: 20px;
+            float: left;
+            padding-top: 10px;
+            margin-top: 5px
+        }
+        
+        .menu{
+            width: 400px;
+            float: left;
+            height: 70px;
+        }
+        
+        ul{
+            float: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        ul li{
+            list-style: none;
+            margin-left: 62px;
+            margin-top: 27px;
+            font-size: 14px;
+        }
+        
+        ul li a{
+            text-decoration: none;
+            color: #121110;
+            font-family: Arial;
+            font-weight: bold;
+            transition: 0.4s ease-in-out;
+        }
+        
+        ul li a:hover{
+            color: #f2eae7;
+        }
+        
+        .search{
+            width: 330px;
+            float: left;
+            margin-left: 270px;
+        }
+        
+        .srch{
+            font-family: 'Times New Roman';
+            width: 200px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid #ff7200;
+            margin-top: 13px;
+            color: #d6cdcd;
+            border-right: none;
+            font-size: 16px;
+            float: left;
+            padding: 10px;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+        
+        .btn{
+            width: 100px;
+            height: 40px;
+            background: #ff7200;
+            border: 2px solid #ff7200;
+            margin-top: 13px;
+            color: #0a0808;
+            font-size: 15px;
+            border-bottom-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            transition: 0.2s ease;
+            cursor: pointer;
+        }
+        .btn:hover{
+            color: #000;
+        }
+        
+        .btn:focus{
+            outline: none;
+        }
+        
+        .srch:focus{
+            outline: none;
+        }
+
+</style>
+</head>
+
+<body>
+    <!-- <header>
+        
+        <a href="#" class="brand">ZAP FLIGHTS</a>
+            <div class="navigation">
+                <div class="navigation-items" >
+                    <a href="#">Home</a>
+                    <a href="/project">Search Flights</a>
+                    <a href='/t'>Booked Tickets</a>
+                    <a href='/pnrforcancel'>Cancel Tickets</a>
+                    {% if 'logged_in' not in session %}
+                    <a href='/login'>LogIn</a>
+                    {% endif %}
+
+                    {% if 'logged_in' in session %}
+
+                        <a href="/logout">LogOut</a>
+
+                    {% endif %}
+                </div>
+            </div>
+            <span class="navbar-text">
+                {% if 'logged_in' in session %}
+                    {{ session['username'] }}
+                {% endif %}
+            </span>
+        </header> -->
+
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"   onclick="window.location.href='/'">ZAP</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href='/'>HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <li><a href="#">DESIGN</a></li>
+                    {% if 'logged_in' not in session %}
+                        <li><a href='/login'>LOGIN</a></li>
+                    {% endif %}
+
+                    {% if 'logged_in' in session %}
+
+                    <li><a href="/logout">LogOut</a></li>
+
+                    {% endif %}
+
+                    {% if 'logged_in' in session %}
+                        <li><a>{{ session['username'] }}</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+
+        </div> 
+
+
+
+
+  <header>
+    <h1>SEARCH FLIGHTS</h1>
+    </header>
+      
+      <div class="login-box">
+        <div class="login-header">
+            <header></header>
+        </div>
+        <!-- <form action="/search" method="GET"> -->
+        <form action="/search" method="GET">
+        <div class="input-box">
+            <input list="from" class="input-field" name="from" placeholder="Departure city" autocomplete="off" required>
+            <datalist id="from">
+                <option value="Delhi">
+                <option value="Mumbai">
+                <option value="Jaipur">
+                <option value="Chennai">
+                <option value="Goa">
+            </datalist>
+        </div>
+        <div class="input-box">
+            <input list="to" class="input-field" name="to" placeholder="Destination city" autocomplete="off" required>
+            <datalist id="to">
+                <option value="Delhi">
+                <option value="Mumbai">
+                <option value="Jaipur">
+                <option value="Chennai">
+                <option value="Goa">
+            </datalist>
+        </div>
+        <div class="input-box">
+          <input type="date" class="input-field" id="date" name="date" placeholder="Date" autocomplete="off" required>
+        </div>
+
+        <div class="input-box">
+            <input type="number" class="input-field" id="number" name="no_of_pass" placeholder="No of Passenger(MAX=5)" autocomplete="off" max="5" required>
+          </div>
+
+          <!-- <div class="input-box" id="class" name="class" autocomplete="off" required>
+            <label for="class">Class</label> -->
+        <!-- <div class="input-box">
+            <select name="class1">
+                <option value="" disabled selected>Select Class</option>
+                <option value="economy">Economy</option>
+                <option value="business">Business</option>
+            </select>
+        </div> -->
+        <div class="input-box">
+            <select name="class1" class="input-field" id="class1"  required>
+                <option value="" disabled selected>Select Class</option>
+                <option value="economy">Economy</option>
+                <option value="business">Business</option>
+            </select>
+        </div>
+        
+
+        <div class="input-submit">
+            <button class="submit-btn" id="submit"></button>
+            <label for="submit" value="Search Flights">SEARCH</label>
+        </div>
+      </form>
+    </div>
+  
+        <script>
+    
+      document.getElementById('flights-list').addEventListener('change', function(event) {
+          var selectedFlightId = event.target.value;
+          document.getElementById('selected-flight-id').value = selectedFlightId;
+          document.getElementById('book-flight-btn').disabled = false;
+      });
+        </script>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 ONline ReserVation</p>
+    </footer>
+</body>
+</html>

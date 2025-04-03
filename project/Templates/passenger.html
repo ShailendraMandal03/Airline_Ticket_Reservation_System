@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset=" UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="/static/css/passenger.css">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Add passenger</title>
+</head>
+
+<body>
+    
+    <div class="container">
+<!-- 
+            
+        <div class="c">
+        
+            <a href="#" >ZAP FLIGHTS</a>
+                <div class="navigation">
+                    <div class="navigation-items" >
+                        <a href="#">Home</a>
+                        <a href="/project">Search Flights</a>
+                        <a href='/t'>Booked Tickets</a>
+                        <a href='/pnrforcancel'>Cancel Tickets</a>
+                        {% if 'logged_in' not in session %}
+                        <a href='/login'>LogIn</a>
+                        {% endif %}
+
+                        {% if 'logged_in' in session %}
+
+                            <a href="/logout">LogOut</a>
+
+                        {% endif %}
+                    
+                
+                 <span class="navbar-text">
+                    {% if 'logged_in' in session %}
+                        <a><b >{{ session['username'] }}</b></a>
+                    {% endif %}
+                    </div>
+                </span> 
+            </div>
+        </div> -->
+
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"   onclick="window.location.href='/'">ZAP</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href='/'>HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <!-- <li><a href="#">DESIGN</a></li> -->
+                    {% if 'logged_in' not in session %}
+                    <li><a href='/login'>LOGIN</a></li>
+                    {% endif %}
+
+                    {% if 'logged_in' in session %}
+
+                    <li><a href="/logout">LogOut</a></li>
+
+                    {% endif %}
+
+                    {% if 'logged_in' in session %}
+                        <li><a>{{ session['username'] }}</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+
+            <!-- <div class="search">
+                <pre><input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div> -->
+
+        </div> 
+
+
+
+
+
+
+
+        <p><u><b>Flight: {{ flight_details.from_location }} to {{ flight_details.to_location }} on {{ flight_details.date }} - {{ flight_details.airline }} ({{ flight_details.flight_no }})</b></u></p>
+        <br>
+
+
+
+
+
+        <header>ADD PASSENGER Detail</header>
+
+        <form action="/submit" method="POST">
+            {% for passenger in range(no_of_pass) %}
+            <div class="form first">
+                <div class="personal detail">
+                    <span class="title"><b>Passenger Detail {{passenger +1}}</b></span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label> Name</label>
+                            <input type="text" id="Name" name="passenger_name[]"  placeholder="Ënter your Name" required>
+
+                        </div>
+
+                        <div class="input-field">
+                                <label> AGE</label>
+                                <input type="number" id="Age" name="passenger_age[]" placeholder="AGE" required>
+                         </div>
+
+                        <div class="input-field">
+                                <label> Email</label>
+                                <input type="email" id="Email" name="passenger_email[]" placeholder="EMail" required>
+                        </div>
+
+                        <div class="input-field">
+                                <label >Gender</label>
+                                <select id="Gender" name="Gender" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option >Male</option>
+                                    <option >Female</option>
+                                    <option >Other</option>
+                                </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>ID_type</label>
+                            <select id="ID_type" name="ID" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option >Voter ID Card</option>
+                                <option >Adhar CArd</option>
+                                <option >Passport</option>
+                            </select>
+                        </div>
+
+
+                        
+                        <div class="input-field">
+                            <label> ID number</label>
+                            <input type="number" id="ID_no" name="passenger_id[]" placeholder="ID" required>
+                        </div>
+
+                        <div class="input-field">
+                                <label >Passenger's Inflight Meal</label>
+                                <select id="meal_choice" name="inflight-meal" required>
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+                    <header>ADD FLIGHT Detail</header>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="Insurance">Do you want to purchase Travel Insurance?</label>
+                            <select id="insurances" name="Insurance" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div> 
+                        
+                        <div class="input-field">
+                            <label>	Do you want to opt for Priority Checkin?</label>
+                            <select id="priority_checkins" name="Priority-checkin" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div> 
+
+                        <div class="input-field">
+                            <label >	Do you want access to our Premium Lounge?</label>
+                            <select id="premium_lounges" name="Premium-lounge" >
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div> 
+                        
+                    </div>
+            
+                   
+
+
+
+            <!-- <input type="submit" value="Submit"> -->
+            <div class="input-submit">
+                <button class="submit-btn" id="submit"></button>
+                <label for="submit" value="Submit">SUMMIT</label>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

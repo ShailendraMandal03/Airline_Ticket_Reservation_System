@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cancel Booked Tickets</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Additional CSS styles for enhanced appearance */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 80px;
+            color: #030337;
+        }
+
+        h3 {
+            text-align: center;
+            color: #030337;
+        }
+
+        .cancel-success {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .cancel-success p {
+            margin-bottom: 20px;
+        }
+
+        .cancel-success p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Additional CSS for navbar */
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            /* z-index: 999; */
+        }
+
+        .brand {
+            font-size: 32px;
+            text-decoration: none;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .navigation-items a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation-items a:hover {
+            background-color: #333;
+        }
+
+        .navbar-text {
+            font-weight: bold;
+            font-size: 20px;
+            color: #fff;
+            margin-left: auto;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="brand">ZAP FLIGHTS</a>
+        <div class="navigation">
+            <div class="navigation-items">
+                <a href="/">Home</a>
+                <a href="/project">Search Flights</a>
+                <a href='/t'>Booked Tickets</a>
+                <a href='/pnrforcancel'>Cancel Tickets</a>
+                {% if 'logged_in' not in session %}
+                <a href='/login'>LogIn</a>
+                {% endif %}
+                {% if 'logged_in' in session %}
+                <a href="/logout">LogOut</a>
+                {% endif %}
+            </div>
+        </div>
+        <!-- <span class="navbar-text">
+            {% if 'logged_in' in session %}
+            {{ session['username'] }}
+            {% endif %}
+        </span> -->
+    </header>
+
+    <!-- <h2>CANCEL BOOKED TICKETS</h2>
+    <div class="cancel-success">
+        <p>Your ticket has been cancelled successfully.</p>
+        <p>{{refund_amount}} will be refunded to your bank account (Cancellation charge on 15% of your ticket amount has been deducted).</p>
+    </div> -->
+
+    <h2 style="text-align: center; color: #030337; font-size: 28px; padding-top: 50px;">CANCEL BOOKED TICKETS</h2>
+<div class="cancel-success" style="max-width: 600px; margin: 20px auto; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 20px;">
+    <p style="color: #030337; font-size: 18px;">Your ticket has been <span style="color: green; font-weight: bold;">cancelled successfully</span>.</p>
+    <p style="color: #030337; font-size: 18px;"><strong>{{refund_amount}}</strong> will be refunded to your bank account (Cancellation charge on 15% of your ticket amount has been deducted).</p>
+</div>
+
+
+    <!--Following data fields were empty!
+        ...
+        ADD VIEW FLIGHT DETAILS AND VIEW JETS/ASSETS DETAILS for ADMIN
+        PREDEFINED LOCATION WHEN BOOKING TICKETS
+    -->
+</body>
+</html>

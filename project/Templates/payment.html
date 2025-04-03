@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Payment Details</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <style>
+        input {
+            border: 1.5px solid #030337;
+            border-radius: 4px;
+            padding: 7px 30px;
+        }
+        input[type=submit] {
+            background-color: #030337;
+            color: white;
+            border-radius: 4px;
+            padding: 7px 45px;
+            margin: 0px 357px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1 id="title">ZAP AIRLINES</h1>
+
+    <form action="/pay" method="POST">
+        <h2>ENTER THE PAYMENT DETAILS</h2>
+        <h3 style="margin-left: 30px"><u>Payment Summary</u></h3>
+        <table cellpadding="5" style="margin-left: 50px">
+            <tr>
+                <td class="fix_table">Base Fare, Fuel and Transaction Charges (Fees & Taxes included):</td>
+                <td class="fix_table">&#x20b9; {{ price*no_of_passengers }}+300</td>
+            </tr>
+            <tr>
+                <td class="fix_table">Meal Combo Charges:</td>
+                <td class="fix_table">&#x20b9; {{ total_meal_charges }}</td>
+            </tr>
+
+            <tr>
+                <td class="fix_table">Insurance Charges:</td>
+                <td class="fix_table">&#x20b9;200</td>
+            </tr>
+            <tr>
+                <td class="fix_table">Priority checkin Charges:</td>
+                <td class="fix_table">&#x20b9;400</td>
+            </tr>
+            <!-- Add other rows here for Priority Checkin Fees, Lounge Access Fees, Insurance Fees, Discount -->
+        </table>
+        <hr style="margin-right: 900px; margin-left: 50px">
+        <table cellpadding="5" style="margin-left: 50px">
+            <tr>
+                <td class="fix_table"><strong>Total:</strong></td>
+                <td class="fix_table" id="totalCharge"> <!-- Removed name attribute -->
+            </tr>
+        </table>
+        <hr style="margin-right: 900px; margin-left: 50px">
+        <br>
+        <input type="hidden" name="total_charge"> <!-- Removed id attribute -->
+        <p style="margin-left: 50px">Your Payment/Transaction ID is <strong>{{ payment_id }}.</strong> Please note it down for future reference.</p>
+        <br>
+        <!-- Add payment mode radio buttons and submit button here -->
+
+        <table cellpadding="5" style="margin-left: 50px">
+            <tr>
+                <td class="fix_table"><strong>Enter the Payment Mode:-</strong></td>
+            </tr>
+            <tr>
+                <td class="fix_table"><i class="fa fa-credit-card" aria-hidden="true"></i> Credit Card <input type="radio" name="payment_mode" value="credit card" checked></td>
+                <td class="fix_table"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Debit Card <input type="radio" name="payment_mode" value="debit card"></td>
+                <td class="fix_table"><i class="fa fa-desktop" aria-hidden="true"></i> Net Banking <input type="radio" name="payment_mode" value="net banking"></td>
+            </tr>
+        </table>
+        <br>
+        <input type="submit" value="Pay Now" name="Pay_Now">
+    </form>
+
+    <script>
+        // Calculate total amount
+        function calculateTotal(price, totalMealCharges,no_of_passengers) {
+            var baseFare = no_of_passengers * price + 300; 
+            var insuranceCharges = 200; 
+            var priorityCheckinCharges = 400; 
+
+            var totalAmount = baseFare + totalMealCharges + insuranceCharges + priorityCheckinCharges;
+
+            // Update the total amount in the HTML
+            document.getElementById("totalCharge").innerHTML = "&#x20b9; " + totalAmount;
+
+            // Set the total charge value in the hidden input field
+            document.querySelector("input[name=total_charge]").value = totalAmount;
+        }
+
+        window.onload = function() {
+            var price = {{ price }};
+            var totalMealCharges = {{ total_meal_charges }};
+            var no_of_passengers={{no_of_passengers}}
+            calculateTotal(price, totalMealCharges,no_of_passengers);
+        };
+    </script>
+</body>
+</html>
